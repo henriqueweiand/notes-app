@@ -1,14 +1,14 @@
-import { useTopics } from "@/hooks/Topic";
+import { useDocuments } from "@/hooks/Document";
 import { useRouter } from "next/router"
 
 export default function Product() {
   const { query } = useRouter();
-  const { addTopic } = useTopics()
+  const { addDocument } = useDocuments()
 
 
   return (
     <>
-      <button onClick={() => addTopic({
+      <button onClick={() => addDocument({
         title: 'new one',
         description: 'the new one'
       })}>Add new one</button>

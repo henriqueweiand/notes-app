@@ -14,5 +14,5 @@ A basic NextJS project with:
 - [ ] Create the structure of the project
 - [ ] Create components
 - [ ] Apply DDD with the features of the project
-- [ ] Users should create a new topic
-- [ ] User should add the text inside that topic
+- [ ] Users should create a new document
+- [ ] User should add the text inside that document

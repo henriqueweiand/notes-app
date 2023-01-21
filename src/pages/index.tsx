@@ -2,20 +2,20 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import ListItem from "@/components/listItem";
-import { useTopics } from "@/hooks/Topic";
+import { useDocuments } from "@/hooks/Document";
 import { Container, Sidebar, Main } from "../styles/pages/home"
 
 export default function Home() {
   const { query: { id } } = useRouter()
-  const { topics, getTopic } = useTopics();
+  const { documents, getDocument } = useDocuments();
 
-  const defaulTopic = getTopic(id as any)
+  const defaulDocument = getDocument(id as any)
 
   return (
     <Container role="container">
       <Sidebar role="aside">
         <div>
-          {topics.map(topic => <ListItem {...topic} key={topic.id} />)}
+          {documents.map(document => <ListItem {...document} key={document.id} />)}
         </div>
         <Link href={"/document/create"}>
           <button>create</button>
@@ -23,18 +23,18 @@ export default function Home() {
       </Sidebar>
 
       <Main role="main">
-        {defaulTopic && (
+        {defaulDocument && (
           <>
             <div>
               <h1>
-                {defaulTopic.title}
+                {defaulDocument.title}
               </h1>
               <Link href={"/document"}>
                 <button>Edit</button>
               </Link>
             </div>
             <p>
-              {defaulTopic.description}
+              {defaulDocument.description}
             </p>
           </>
         )}
