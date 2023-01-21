@@ -16,5 +16,3 @@ A basic NextJS project with:
 - [ ] Apply DDD with the features of the project
 - [ ] Users should create a new topic
 - [ ] User should add the text inside that topic
-
-- example https://github.com/henriqueweiand/curso-electron-react/blob/main/src/renderer/src/pages/layouts/default.tsx
