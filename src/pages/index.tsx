@@ -1,34 +1,44 @@
-import { useState } from "react";
-import { Container } from "../styles/pages/home"
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-interface TopicsProps {
-  id: number,
-  title: string;
-}
-
-const topics: TopicsProps[] = [
-  {
-    id: 1,
-    title: 'test',
-  },
-  {
-    id: 2,
-    title: 'test2',
-  }
-]
+import ListItem from "@/components/listItem";
+import { useTopics } from "@/hooks/Topic";
+import { Container, Sidebar, Main } from "../styles/pages/home"
 
 export default function Home() {
-  const [topic, setTopic] = useState(topics[0]);
+  const { query: { id } } = useRouter()
+  const { topics, getTopic } = useTopics();
+
+  const defaulTopic = getTopic(id as any)
 
   return (
-    <Container data-testid="home-container">
-      <div>
-        {topics.map(topic => <div onClick={() => setTopic(topic)} key={topic.id}>{topic.title}</div>)}
-      </div>
+    <Container role="container">
+      <Sidebar role="aside">
+        <div>
+          {topics.map(topic => <ListItem {...topic} key={topic.id} />)}
+        </div>
+        <Link href={"/document/create"}>
+          <button>create</button>
+        </Link>
+      </Sidebar>
 
-      <div>
-        {topic.title}
-      </div>
+      <Main role="main">
+        {defaulTopic && (
+          <>
+            <div>
+              <h1>
+                {defaulTopic.title}
+              </h1>
+              <Link href={"/document"}>
+                <button>Edit</button>
+              </Link>
+            </div>
+            <p>
+              {defaulTopic.description}
+            </p>
+          </>
+        )}
+      </Main>
     </Container>
   )
 }
