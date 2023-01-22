@@ -1,9 +1,8 @@
 import { styled } from "..";
 
 export const Container = styled('div', {
-    minHeight: '100vh',
-    padding: '1rem',
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
     justifyItems: 'space-between',
     maxWidth: 150,
@@ -13,5 +12,22 @@ export const Container = styled('div', {
 
     div: {
         flex: 1,
-    }
+    },
+
+    variants: {
+        size: {
+          none: {
+            maxWidth: 0,
+            minWidth: 0,
+          },
+          small: {
+            maxWidth: '10rem',
+            minWidth: '10rem',
+          },
+          large: {
+            maxWidth: '20rem',
+            minWidth: '20rem',
+          },
+        },
+    },
 })

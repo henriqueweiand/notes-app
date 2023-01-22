@@ -11,7 +11,7 @@ const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
 
   return (
     <Container role="container" {...rest}>
-      <Sidebar role="aside" />
+      <Sidebar role="aside" size="small" />
 
       <Main role="main">
         {children}

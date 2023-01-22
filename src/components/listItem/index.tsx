@@ -7,7 +7,7 @@ interface DocumentsProps {
     title: string
 }
 
-const ListItem = ({ id, title, ...rest }: DocumentsProps) => {
+const ListItem: React.FC<DocumentsProps> = ({ id, title, ...rest }) => {
     return (
         <LinkStylized>
             <Link href={`/${id}`} {...rest}>
