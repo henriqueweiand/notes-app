@@ -11,8 +11,8 @@ A basic NextJS project with:
 
 ## To-do
 
-- [ ] Create the structure of the project
-- [ ] Create components
-- [ ] Apply DDD with the features of the project
-- [ ] Users should create a new document
+- [x] Create the structure of the project
+- [x] Create new document structure
+- [ ] User should create a new document
 - [ ] User should add the text inside that document
+- [ ] User should edit the text inside that document
