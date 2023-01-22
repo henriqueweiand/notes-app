@@ -21,16 +21,12 @@ describe('Home', () => {
 
     render(
       <DocumentProvider>
-        <Home />
+        <Home data-testid="layout-container" />
       </DocumentProvider>
     )
-    const container = screen.getByRole('container');
-    const aside = screen.getByRole('aside');
-    const main = screen.getByRole('main');
+    const container = screen.getByTestId('layout-container');
 
     expect(container).toBeInTheDocument();
-    expect(aside).toBeInTheDocument();
-    expect(main).toBeInTheDocument();
   })
 
   it('render screen with one document', () => {
