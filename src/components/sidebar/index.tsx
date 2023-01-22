@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from "react";
 import Link from "next/link";
 
-import { Container } from '@/styles/components/Sidebar';
+import { Container } from '@/styles/components/sidebar';
 import { useDocuments } from "@/hooks/Document";
 import ListItem from "@/components/listItem";
 
