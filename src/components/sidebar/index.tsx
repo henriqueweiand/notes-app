@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Container } from '@/styles/components/sidebar';
 import { useDocuments } from "@/hooks/Document";
 import ListItem from "@/components/listItem";
+import Button from "../button";
 
 interface SidebarProps extends HTMLAttributes<HTMLDivElement> {
     size?: 'small' | 'large'
@@ -19,7 +20,7 @@ const Sidebar: React.FC<SidebarProps> = ({ size = 'small', ...rest }) => {
             </div>
 
             <Link href={"/document/create"}>
-                <button>create</button>
+                <Button>create</Button>
             </Link>
         </Container>
     )
