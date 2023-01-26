@@ -5,7 +5,7 @@ import Button from "@/components/button";
 import Layout from "@/components/layout";
 import Input from "@/components/input";
 
-export default function Product() {
+export default function Create() {
   const { addDocument } = useDocuments()
   const [document, setDocument] = useState({ title: '', description: '' });
 

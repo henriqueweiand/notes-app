@@ -41,10 +41,12 @@ describe('Home', () => {
       </DocumentProvider>
     )
 
+    const editButton = screen.getByRole('edit')
     const title = screen.getByRole('heading', { name: new RegExp(document.title, 'i') })
     const description = screen.getByText(new RegExp(document.description, 'i'))
 
     expect(title).toBeInTheDocument();
     expect(description).toBeInTheDocument();
+    expect(editButton).toBeInTheDocument();
   })
 })

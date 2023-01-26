@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 
 import { useDocuments } from "@/hooks/Document";
 import Layout from "@/components/layout";
+import Button from "@/components/button";
 
 export default function Home({ ...rest }) {
   const { query: { id } } = useRouter()
@@ -18,8 +19,8 @@ export default function Home({ ...rest }) {
             <h1>
               {defaulDocument.title}
             </h1>
-            <Link href={"/document"}>
-              <button>Edit</button>
+            <Link href={`/document/${defaulDocument.id}`}>
+              <Button role="edit" >Edit</Button>
             </Link>
           </div>
           <p>

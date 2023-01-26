@@ -29,6 +29,15 @@ export const DocumentProvider = ({ children }: DocumentProviderProps): JSX.Eleme
     return document || null
   }
 
+  function editDocument(editDocument: Document) {
+    setDocument((state) => state.map(document => {
+      if (document.id == editDocument.id) {
+        return editDocument;
+      }
+      return document;
+    }))
+  }
+
   function addDocument(newDocument: AddDocument) {
     setDocument((state) => [
       {
@@ -44,6 +53,6 @@ export const DocumentProvider = ({ children }: DocumentProviderProps): JSX.Eleme
   }, []);
 
   return (
-    <DocumentsContext.Provider value={{ addDocument, documents, getDocument }}>{children}</DocumentsContext.Provider>
+    <DocumentsContext.Provider value={{ editDocument, addDocument, documents, getDocument }}>{children}</DocumentsContext.Provider>
   );
 };

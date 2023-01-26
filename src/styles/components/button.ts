@@ -2,6 +2,7 @@ import { styled } from "..";
 
 export const Container = styled('button', {
     display: 'inline-block',
+    width: '100%',
     background: '$green500',
     border: '1px solid $green300',
     borderRadius: 5,
