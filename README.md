@@ -2,6 +2,8 @@
 
 ![GH-Actions](https://github.com/henriqueweiand/notes-app/workflows/GH-Actions/badge.svg)
 
+URL: https://notes-app-lovat-kappa.vercel.app/
+
 ## Overview
 
 A basic NextJS project with:
