@@ -38,8 +38,8 @@ export default function Document() {
       {
         !!document ? (
           <>
-            <Input type="text" name="title" value={document?.title} onChange={onChange} />
-            <Input as="textarea" rows="10" type="text" name="description" value={document?.description} onChange={onChange} />
+            <Input type="text" name="title" value={document.title} onChange={onChange} />
+            <Input as="textarea" rows="10" type="text" name="description" value={document.description} onChange={onChange} />
 
             <Button role="button" onClick={() => editDocument(document)}>Edit</Button>
           </>

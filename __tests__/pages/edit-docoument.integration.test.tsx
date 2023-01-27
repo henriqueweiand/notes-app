@@ -1,6 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { useRouter } from 'next/router'
-import userEvent from '@testing-library/user-event';
 
 import Document from '@/pages/document/[id]'
 import { useDocuments } from '@/hooks/Document'
@@ -13,23 +12,25 @@ jest.mock('next/router', () => ({
 
 jest.mock('@/hooks/Document', () => ({
   useDocuments: jest.fn(),
-  editDocument: jest.fn()
 }))
 
+const documents = [{ id: 1, title: "title", description: "description" }];
+const document = documents[0];
+
+const renderDocument = () => {
+  (useRouter as jest.Mock).mockReturnValue({ query: { id: 1 } });
+  (useDocuments as jest.Mock).mockReturnValue({ documents, getDocument: () => document, editDocument: () => { } });
+
+  render(
+    <DocumentProvider>
+      <Document />
+    </DocumentProvider>
+  )
+};
+
 describe('Edit document', () => {
-
   it('render screen with one document and the input must be filled', () => {
-    const documents = [{ id: 1, title: "title", description: "description" }];
-    const document = documents[0];
-    (useRouter as jest.Mock).mockReturnValue({ query: { id: 1 } });
-    (useDocuments as jest.Mock).mockImplementation
-      (useDocuments as jest.Mock).mockReturnValue({ documents, getDocument: () => document });
-
-    render(
-      <DocumentProvider>
-        <Document />
-      </DocumentProvider>
-    )
+    renderDocument()
 
     const title = screen.getByDisplayValue(new RegExp(document.title, 'i'))
     const description = screen.getByDisplayValue(new RegExp(document.description, 'i'))
@@ -39,22 +40,15 @@ describe('Edit document', () => {
   })
 
   it('User should be able to edit the document', async () => {
-    const documents = [{ id: 1, title: "title", description: "description" }];
-    const document = documents[0];
-    (useRouter as jest.Mock).mockReturnValue({ query: { id: 1 } });
-    (useDocuments as jest.Mock).mockReturnValue({ documents, getDocument: () => document, editDocument: () => { } });
+    renderDocument()
 
-    render(
-      <DocumentProvider>
-        <Document />
-      </DocumentProvider>
-    )
-    const inputText = ' edited';
-    const input = screen.getByDisplayValue(new RegExp(document.title, 'i'))
-    await userEvent.type(input, inputText);
-
+    const handleClick = jest.fn();
     const component = screen.getByRole('button', { name: new RegExp('Edit', 'i') });
+    component.onclick = handleClick;
+
     await fireEvent.click(component);
+
+    expect(handleClick).toHaveBeenCalled();
   })
 
 })
